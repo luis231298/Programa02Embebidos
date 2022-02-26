@@ -65,3 +65,20 @@ def leds(num):
     GPIO.output(18, GPIO.LOW)
     GPIO.output(16, GPIO.LOW)
     GPIO.output(26, GPIO.LOW)
+
+def bcd(num):
+	"""Converts num to a BCD representation"""
+	GPIO.output(36, GPIO.HIGH if (num & 0x00000001) > 0 else GPIO.LOW )
+	GPIO.output(38, GPIO.HIGH if (num & 0x00000002) > 0 else GPIO.LOW )
+	GPIO.output(40, GPIO.HIGH if (num & 0x00000004) > 0 else GPIO.LOW )
+	GPIO.output(37, GPIO.HIGH if (num & 0x00000008) > 0 else GPIO.LOW )
+    
+def marquee(type='pingpong'):
+	switcher = {
+		'left'     : _marquee_left,
+		'right'    : _marquee_right,
+		'pingpong' : _marquee_pingpong
+	}
+	func = switcher.get(type, None)
+	if func:
+		func()
