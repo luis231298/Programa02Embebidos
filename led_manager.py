@@ -38,3 +38,30 @@ GPIO.setup(18, GPIO.OUT, initial=GPIO.LOW)#4
 GPIO.setup(16, GPIO.OUT, initial=GPIO.LOW)#3
 GPIO.setup(12, GPIO.OUT, initial=GPIO.LOW)#2
 GPIO.setup(10, GPIO.OUT, initial=GPIO.LOW)#1
+
+def leds(num):
+    #usamos if con los numeros como condicion encendera segun el boton
+    #presionado en la web
+    if num == 1:
+        GPIO.output(10, GPIO.HIGH)
+    elif num == 2:
+        GPIO.output(12, GPIO.HIGH)
+    elif num == 3:
+        GPIO.output(16, GPIO.HIGH)
+    elif num == 4:
+        GPIO.output(18, GPIO.HIGH)
+    elif num == 5:
+        GPIO.output(22, GPIO.HIGH) 
+    elif num == 6:
+        GPIO.output(24, GPIO.HIGH)
+    elif num == 7:
+        GPIO.output(26, GPIO.HIGH)
+	#reiniciamos los leds (apagandolos)
+    sleep(0.4)
+    GPIO.output(10, GPIO.LOW) 
+    GPIO.output(12, GPIO.LOW)
+    GPIO.output(24, GPIO.LOW)
+    GPIO.output(22, GPIO.LOW)
+    GPIO.output(18, GPIO.LOW)
+    GPIO.output(16, GPIO.LOW)
+    GPIO.output(26, GPIO.LOW)
