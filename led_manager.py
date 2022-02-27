@@ -39,6 +39,8 @@ GPIO.setup(16, GPIO.OUT, initial=GPIO.LOW)#3
 GPIO.setup(12, GPIO.OUT, initial=GPIO.LOW)#2
 GPIO.setup(10, GPIO.OUT, initial=GPIO.LOW)#1
 
+a=[10,12,16,18,22,24,26,32]
+
 def leds(num):
     #usamos if con los numeros como condicion encendera segun el boton
     #presionado en la web
@@ -56,9 +58,11 @@ def leds(num):
         GPIO.output(24, GPIO.HIGH)
     elif num == 7:
         GPIO.output(26, GPIO.HIGH)
+    else:
+        print("No funciona")
 	#reiniciamos los leds (apagandolos)
     sleep(0.4)
-    GPIO.output(10, GPIO.LOW) 
+    GPIO.output(10, GPIO.LOW) #
     GPIO.output(12, GPIO.LOW)
     GPIO.output(24, GPIO.LOW)
     GPIO.output(22, GPIO.LOW)
@@ -82,3 +86,16 @@ def marquee(type='pingpong'):
 	func = switcher.get(type, None)
 	if func:
 		func()
+        
+def _marquee_left():
+    for x in a:
+        GPIO.output(x, GPIO.HIGH) # Turn led on
+        sleep(0.7)
+        GPIO.output(x, GPIO.LOW)  # Turn led off
+    sleep(0.7)
+
+def _marquee_right():
+    pass
+
+def _marquee_pingpong():
+    pass
