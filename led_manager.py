@@ -41,6 +41,20 @@ GPIO.setup(10, GPIO.OUT, initial=GPIO.LOW)#1
 
 a=[10,12,16,18,22,24,26,32]
 
+def left():
+    for x in reversed(a):
+        GPIO.output(x, GPIO.HIGH) # Turn led on
+        sleep(0.7)
+        GPIO.output(x, GPIO.LOW)  # Turn led off
+    #sleep(0.3)
+    
+def right():
+    for x in a:
+        GPIO.output(x, GPIO.HIGH) # Turn led on
+        sleep(0.7)
+        GPIO.output(x, GPIO.LOW)  # Turn led off
+    #sleep(0.3)
+
 def leds(num):
     #usamos if con los numeros como condicion encendera segun el boton
     #presionado en la web
@@ -88,18 +102,11 @@ def marquee(type='pingpong'):
 		func()
         
 def _marquee_left():
-    for x in reversed(a):
-        GPIO.output(x, GPIO.HIGH) # Turn led on
-        sleep(0.7)
-        GPIO.output(x, GPIO.LOW)  # Turn led off
-    sleep(0.7)
+    left()
 
 def _marquee_right():
-    for x in a:
-        GPIO.output(x, GPIO.HIGH) # Turn led on
-        sleep(0.7)
-        GPIO.output(x, GPIO.LOW)  # Turn led off
-    sleep(0.7)
+    right()
 
 def _marquee_pingpong():
-    pass
+    right()
+    left()
