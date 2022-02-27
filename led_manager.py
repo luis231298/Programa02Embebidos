@@ -88,14 +88,18 @@ def marquee(type='pingpong'):
 		func()
         
 def _marquee_left():
-    for x in a:
+    for x in reversed(a):
         GPIO.output(x, GPIO.HIGH) # Turn led on
         sleep(0.7)
         GPIO.output(x, GPIO.LOW)  # Turn led off
     sleep(0.7)
 
 def _marquee_right():
-    pass
+    for x in a:
+        GPIO.output(x, GPIO.HIGH) # Turn led on
+        sleep(0.7)
+        GPIO.output(x, GPIO.LOW)  # Turn led off
+    sleep(0.7)
 
 def _marquee_pingpong():
     pass
